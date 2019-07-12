@@ -336,8 +336,8 @@ else
 
     DropAllDatabases -ServerName $ServerName -Credentials $InstanceCredentials 
 
-    TraceToClPerfDb -Level  "Info"
-        -CorrelationId $CorrelationId
+    TraceToClPerfDb -Level  "Info" `
+        -CorrelationId $CorrelationId `
         -EventName "dropped databases with success"
 
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
