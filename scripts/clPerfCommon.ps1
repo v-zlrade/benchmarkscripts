@@ -582,13 +582,13 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
       -EventName "start_download_file" `
       -EventMessage "Downloading file $($FileName) from container $($ContainerName) to folder $($DestinationFolder)."
 
-      TraceToClPerfDb -Level "Info" ` 
+      TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
       -EventName "$StorageAccountName - $StorageAccountKey"
 
     $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod
 
-    TraceToClPerfDb -Level "Info" ` 
+    TraceToClPerfDb -Level "Info" `
         -CorrelationId $CorrelationId `
         -EventName "$StorageAccountName - $StorageAccountKey"
 
@@ -598,7 +598,7 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
     $downloadFileMessage = (Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder) | Out-String
 
     TraceToClPerfDb -Level "Info" `
-    -CorrelationId $CorrelationId ` 
+    -CorrelationId $CorrelationId `
     -EventName "$ContainerName - $context - $FileName -$DestinationFolder"
 
     TraceToClPerfDb -Level "Info" `
