@@ -586,14 +586,15 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
     $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod
     Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder
 
-    TraceToClPerfDb `
+    TraceToClPerfDb -Level "Info" `
+    -CorrelationId $CorrelationId `
+    -EventName "end_download_file"
+
+    TraceToClPerfDb -Level "Info" `
        -CorrelationId $CorrelationId `
        -EventName "file_downloading_message" `
-       -EventMessage $context
+       -EventMessage "$context"
        
-    TraceToClPerfDb -Level "Info" `
-      -CorrelationId $CorrelationId `
-      -EventName "end_download_file"
 }
 
 function DropAllDatabases
