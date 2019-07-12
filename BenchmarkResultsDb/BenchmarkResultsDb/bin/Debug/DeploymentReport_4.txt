@@ -1,0 +1,89 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[adhoc_run_configs]
+       [dbo].[benchmark_runs]
+       [dbo].[scheduled_benchmarks]
+       [dbo].[slo_benchmark_config]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[benchmark_runs].[parallel_exec_cnt] on table [dbo].[benchmark_runs] must be added, but the column has
+         no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid
+         this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation
+         of smart-defaults as a deployment option.
+       The column [dbo].[scheduled_benchmarks].[parallel_exec_cnt] on table [dbo].[scheduled_benchmarks] must be added, but the
+         column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work.
+         To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the
+         generation of smart-defaults as a deployment option.
+       The column [dbo].[slo_benchmark_config].[parallel_exec_cnt] on table [dbo].[slo_benchmark_config] must be added, but the
+         column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work.
+         To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the
+         generation of smart-defaults as a deployment option.
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[scheduled_benchmarks] (Default Constraint)
+       unnamed constraint on [dbo].[slo_benchmark_config] (Default Constraint)
+       [dbo].[fk_slo_benchmark_config_slo_name_benchmark_name_environment] (Foreign Key)
+     Unbind schemabinding
+       [dbo].[scheduled_benchmarks_view] (View)
+     Table rebuild
+       [dbo].[adhoc_run_configs] (Table)
+       [dbo].[benchmark_runs] (Table)
+       [dbo].[scheduled_benchmarks] (Table)
+       [dbo].[slo_benchmark_config] (Table)
+     Rebind schemabinding
+       [dbo].[scheduled_benchmarks_view] (View)
+     Alter
+       [dbo].[benchmark_runs_view] (View)
+       [dbo].[schedule_adhoc_benchmark] (Procedure)
+       [dbo].[schedule_adhoc_benchmark_override] (Procedure)
+       [dbo].[get_next_action] (Procedure)
+       [dbo].[start_benchmark] (Procedure)
+       [dbo].[start_scheduled_benchmark] (Procedure)
+
+** Supporting actions
+     Drop
+       [dbo].[fk_scheduled_benchmarks] (Foreign Key)
+       [dbo].[fk_instance_id_instance_state] (Foreign Key)
+       [dbo].[fk_run_id_benchmark_runs] (Foreign Key)
+       [dbo].[fk_benchmark_results_run_id] (Foreign Key)
+       [dbo].[fk_scheduled_benchmark_id] (Foreign Key)
+       [dbo].[fk_scheduled_benchmarks_slo_name_benchmark_name_environment] (Foreign Key)
+       [dbo].[fk_jobs] (Foreign Key)
+       [dbo].[fk_config_override_id] (Foreign Key)
+     Create
+       [dbo].[adhoc_run_configs].[nci_adhoc_run_configs_priority_id] (Index)
+       [dbo].[benchmark_runs].[nci_benchmark_runs_start_time] (Index)
+       [dbo].[benchmark_runs].[nci_benchmark_runs_end_time_mail_sent] (Index)
+       [dbo].[scheduled_benchmarks].[nci_scheduled_benchmarks_environment_include_is_picked_up] (Index)
+       [dbo].[fk_scheduled_benchmarks] (Foreign Key)
+       [dbo].[fk_instance_id_instance_state] (Foreign Key)
+       [dbo].[fk_run_id_benchmark_runs] (Foreign Key)
+       [dbo].[fk_benchmark_results_run_id] (Foreign Key)
+       [dbo].[fk_scheduled_benchmark_id] (Foreign Key)
+       [dbo].[fk_scheduled_benchmarks_slo_name_benchmark_name_environment] (Foreign Key)
+       [dbo].[fk_jobs] (Foreign Key)
+       [dbo].[fk_config_override_id] (Foreign Key)
+     Refresh
+       [dbo].[unsent_benchmark_results_view] (View)
+       [dbo].[get_pending_benchmark_actions] (Function)
+       [dbo].[schedule_job] (Procedure)
+       [dbo].[exec_and_verify_get_next_action] (Procedure)
+       [dbo].[end_benchmark] (Procedure)
+       [dbo].[mark_mail_sent] (Procedure)
+       [dbo].[test_cleanup] (Procedure)
+       [dbo].[test_get_next_action] (Procedure)
+       [dbo].[test_benchmark_actions] (Procedure)
+       [dbo].[run_tests] (Procedure)
+
+Your permissions to see all objects in the server or database could not be verified.  The original error was:
+The SELECT permission has not been granted on 'sys.sql_logins' for the 'master' database. You must be a member of the 'loginmanager' role to access this system view. 
+Reverse Engineer will continue the import process, and logins will not be imported.
+The reverse engineering operation will attempt to continue anyway, but the resulting model might be incomplete, malformed, or incorrect.
+The column [dbo].[benchmark_runs].[parallel_exec_cnt] on table [dbo].[benchmark_runs] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[scheduled_benchmarks].[parallel_exec_cnt] on table [dbo].[scheduled_benchmarks] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[slo_benchmark_config].[parallel_exec_cnt] on table [dbo].[slo_benchmark_config] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

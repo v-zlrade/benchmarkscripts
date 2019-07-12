@@ -1,0 +1,44 @@
+Job example: 
+
+{"Benchmarks":  [
+    {
+      "InstanceConfigs":
+      {
+        "ConfigParamOverrides": {"confignames":"", "configvalues":""},
+        "InstanceSettingsOverrides":  "<InstanceSettingsXML>" ,
+        "DatabaseSettingsOverrides": "<DatabaseSettingsXML>",
+        "SloPropertyBagOverrides": "<SloPropertyBagXML>",
+        "TraceFlags": ""
+      },
+      "BenchmarkConfigs": {
+	"BenchmarkName":"..",
+	"ProcessorCount": ..,
+	"IsBc": ..,
+	"HardwareGeneration":"..",
+	"Environment":"..", 
+	"ShouldRestore": .. ,
+	"Priority": ..,
+	"WorkerNumber": ..,
+	"BenchmarkScalingArgument": .. , 
+	"ScaledDown": .. , 
+	"ServerName": ".." ,
+	"DatabaseName" : ".." ,
+	"WarmupTimespanMinutes": ..,
+	"RunTimespanMinutes": ..,
+	"RequiredProcessorCount":..,
+	"ScheduledBy":"..",
+	"Comment":".."}
+    },
+    {
+      "InstanceConfigs":
+      {
+        "ConfigParamOverrides": {"confignames":"", "configvalues":""},
+        "InstanceSettingsOverrides":  "<InstanceSettingsXML>" ,
+        "DatabaseSettingsOverrides": "<DatabaseSettingsXML>",
+        "SloPropertyBagOverrides": "<SloPropertyBagXML>",
+        "TraceFlags": ""
+      },
+      "BenchmarkConfigs": {…}
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+TPC-C Transaction Report
+
+Log file   : Driver1_txnlog_2018-08-07_10-28-53.btl
+Start time : 2018-08-07 10:43:54
+End time   : 2018-08-07 12:43:54
+Duration   : 7200.0
+In Records : 109086378
+
+               <------- Transaction Stats ------->  <------- Response Time Statistics -------->  <-- Keying Time Stats -->  <-- Think Time Stats --->
+               -----------------------------------  -------------------------------------------  -------------------------  -------------------------
+     Txn Type       Count  Errors  Txn/min   Dist%    MinRT    AvgRT    MaxRT   StdDev  90%tile    MinKT    AvgKT    MaxKT    MinTT    AvgTT    MaxTT
+-------------  ----------  ------  -------  ------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------
+    New Order    47427119       0    109.8   43.48    0.000    0.019   16.213    0.051    0.036    0.000    0.000    0.008    0.000    0.000    0.000
+      Payment    47433218       0    109.8   43.48    0.000    0.037   16.570    0.113    0.066    0.000    0.000    0.010    0.000    0.000    0.000
+     Delivery     4742302       0     11.0    4.35    0.000    0.026   15.141    0.065    0.058    0.000    0.000    0.004    0.000    0.000    0.000
+  Stock Level     4741169       0     11.0    4.35    0.000    0.004   14.995    0.025    0.010    0.000    0.000    0.004    0.000    0.000    0.000
+ Order Status     4742563       7     11.0    4.35    0.000    0.004   14.802    0.019    0.009    0.000    0.000    0.006    0.000    0.000    0.000
+-------------  ----------  ------  -------  ------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------
+     All Txns   109086371       7    252.5  100.00    0.000    0.026   16.570    0.084    0.043    0.000    0.000    0.010    0.000    0.000    0.000
+
+New-Order
+    Avg Order Lines/Order = 10.00
+    Remote Order-Line %   = 1.00
+    Abort Txn %           = 1.00
+
+Payment
+    Remote Warehouse %    = 15.00
+    By Name %             = 60.01
+
+Order-Status
+    By Name %             = 60.00
+
+Delivery
+    Skipped Delivery % (by txn)    = 1.11
+    Skipped Delivery % (by orders) = 0.15
+
+
+Compliance Notes:
+1. Delivery: The percent of transactions with skipped deliveries cannot exceed 1.

@@ -1,0 +1,13 @@
+{
+    "BenchmarkName": "TPCC",
+    "Priority": 100,
+    "ShouldRestore": 1,
+    "BenchmarkScalingArgument": 8500,
+    "ScaledDown": 1,
+    "DatabaseName": "tpcc8500sd",
+    "WarmupTimespanMinutes": 10,
+    "RunTimespanMinutes": 30,
+    "RequiredProcessorCount": 6,
+    "ScheduledBy": "v-dukut",
+    "Comment": "External Python scheduling"
+}

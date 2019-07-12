@@ -1,0 +1,5 @@
+{
+    "MaxLogRate": {"type": "Instance","minValue": 20971520, "maxValue": 125829120 , "gridSize": 10, "description":"choosing between 20 and 120 MB/s"},
+    "group_log_rate_max": {"type": "SloRgMapping", "equals": "MaxLogRate"},
+    "pool_log_rate_max_bps": {"type": "SloRgMapping","equals": "MaxLogRate"}
+}

@@ -1,0 +1,6 @@
+{
+    "server": "clperf.database.windows.net",
+    "username": "clperf",
+    "password": "Nauka2012Podaci",
+    "database": "clperftesting"
+}

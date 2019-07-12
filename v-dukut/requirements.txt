@@ -1,0 +1,4 @@
+pyodbc
+azure-kusto-data
+pandas
+numpy

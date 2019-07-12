@@ -1,0 +1,35 @@
+	1. 2554 weu04
+run_id 9270 max_outstanding_io 840 volume_io_request_size_bytes 108600 max_log_rate 33953350.0 start_time 2019-06-18 11:21:30 end_time 2019-06-18 12:03:32
+transactions_per_minute 186851.033333333 response_time_90th_percentile 0.021 failover_kusto_test (0.0013950892857142857, 0.9835934617946325) backup_kusto_test 2.500516666666667
+
+	2. 2559 weu04
+Run_id 9271 max_outstanding_io 35 volume_io_request_size_bytes 289200 max_log_rate 111619360 start_time 2019-06-18 13:53:17 end_time 2019-06-18 14:35:16
+transactions_per_minute 1.893422000000000e+005 response_time_90th_percentile 0.021 failover_kusto_test (0.0646701388888889, 0.135172141525305) backup_kusto_test 3.00005
+
+	3. 2561 autotu
+Eventualno dodati
+
+	4. 2562 weu04
+	Run_id 9273 max_outstanding_io 470 volume_io_request_size_bytes 43400 max_log_rate 98947350 start_time 2019-06-18 16:00:58 end_time 2019-06-18 16:43:35
+	transactions_per_minute 1.856150666666670e+005 response_time_90th_percentile 2.100000000000000e-002 failover_kusto_test (0.0885044642857143, 0.177843661421989) backup_kusto_test 2.50028333333333
+	5. 2565 auotu --> ovo nije uspesan run
+	Run_id ??? max_outstanding_io 515 volume_io_request_size_bytes 426300 max_log_rate 52159300 start_time ??? end_time ???
+	transactions_per_minute ??? response_time_90th_percentile ??? failover_kusto_test (???, ???) backup_kusto_test ???
+	
+	6. 2566 weu00
+	Run_id 9274 max_outstanding_io 505 volume_io_request_size_bytes 419400 max_log_rate 125286730 start_time 2019-06-18 17:42:58 end_time 2019-06-18 18:25:54
+	transactions_per_minute 2.053828666666670e+005 response_time_90th_percentile 1.900000000000000e-002 failover_kusto_test (0, 1.79635734831851) backup_kusto_test 3.00131666666667
+	
+	7. 2568 weu04
+	Run_id 9275 max_outstanding_io 200 volume_io_request_size_bytes 352900 max_log_rate 41471220 start_time 2019-06-18 18:05:49 end_time 2019-06-18 18:47:56 transactions_per_minute 1.904709000000000e+005 response_time_90th_percentile 2.000000000000000e-002 failover_kusto_test (0.00139508928571429, 0.296795314664706) backup_kusto_test 3.00001666666667
+	
+	8. 2569 autotun
+	Run_id 9276 max_outstanding_io 475 volume_io_request_size_bytes 352800 max_log_rate 72566950 start_time 2019-06-18 19:22:04 end_time 2019-06-18 20:04:13 transactions_per_minute 1.789255000000000e+005 response_time_90th_percentile 2.200000000000000e-002 failover_kusto_test (0.00139508928571429, 0.115285430642495) backup_kusto_test 3.0003
+	
+	9. 2571 weu 00
+	Run_id 9277 max_outstanding_io 765 volume_io_request_size_bytes 257800 max_log_rate 115353400 start_time 2019-06-18 20:23:35 end_time 2019-06-18 21:06:32 transactions_per_minute 2.062057000000000e+005 response_time_90th_percentile 1.900000000000000e-002 failover_kusto_test (0, 0.292706860957342) backup_kusto_test 3.00001666666667
+
+	10. 2572 weu 04
+	Run_id 9278 max_outstanding_io 695  volume_io_request_size_bytes 211400 max_log_rate 26485550 start_time 2019-06-18 20:53:41 end_time 2019-06-18 21:35:33 transactions_per_minute 1.887157000000000e+005 response_time_90th_percentile 2.000000000000000e-002 failover_kusto_test (0.00279017857142857, 0.113203232325513) backup_kusto_test 2.50023333333333
+	
+	

@@ -1,0 +1,52 @@
+{
+  "Version": {
+    "Index": 2898236
+  },
+  "ID": "1oqdkfdqz6980h5gzd7n1vbac",
+  "UpdatedAt": "2018-09-14T13:54:47.321802574Z",
+  "Slot": 1,
+  "Spec": {
+    "ForceUpdate": 0,
+    "Placement": {
+      "Constraints": [
+        "node.role == worker"
+      ]
+    },
+    "Resources": {
+      "Reservations": {
+        "NanoCPUs": 4000000000.0
+      }
+    },
+    "RestartPolicy": {
+      "MaxAttempts": 0,
+      "Window": 0,
+      "Delay": 0,
+      "Condition": "none"
+    },
+    "ContainerSpec": {
+      "Isolation": "default",
+      "Command": [
+        "powershell.exe",
+        "-Command",
+        "./scripts/performanceActions.ps1 -HardwareGeneration GEN4 -ProcessorCount 24 -Action RunBenchmarkWithRestore -Environment Stage -LoggingCredentials (New-Object System.Management.Automation.PSCredential (USERNAME, (echo PASSWORD | ConvertTo-SecureString -AsPlainText -Force))) -InstanceCredentials (New-Object System.Management.Automation.PSCredential (USERNAME, (echo PASSWORD | ConvertTo-SecureString -AsPlainText -Force))) -StorageAccountKey ACCOUNTKEY -Benchmark TPCC -BusinessCritical:$True "
+      ],
+      "Image": "clperftesting.azurecr.io/perftesting"
+    }
+  },
+  "Status": {
+    "Timestamp": "2018-09-14T13:47:30.4030852Z",
+    "Message": "finished",
+    "ContainerStatus": {
+      "PID": 0,
+      "ContainerID": "1ba5b0c23eb85a1d0327f64b36cbb611f743928957afca5731cc51125c698254",
+      "ExitCode": 0
+    },
+    "State": "complete",
+    "PortStatus": null
+  },
+  "Labels": null,
+  "DesiredState": "shutdown",
+  "CreatedAt": "2018-09-14T13:47:01.085701426Z",
+  "ServiceID": "5vmgmm83hb5rwctjd7f9oieej",
+  "NodeID": "nae6bq3htcbvjjylod91wjmqm"
+}

@@ -1,0 +1,6 @@
+SERVER = clperf.database.windows.net
+USERNAME = clperf
+PASSWORD = Nauka2012Podaci
+DATABASE = clperftesting_dubravka_test
+
+
