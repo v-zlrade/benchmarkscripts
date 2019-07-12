@@ -584,23 +584,27 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
 
       TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
-      -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
+      -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod" `
+      -EventMessage "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
 
     $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod
 
     TraceToClPerfDb -Level "Info" `
         -CorrelationId $CorrelationId `
-        -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
+        -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod" `
+        -EventMessage "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
 
     TraceToClPerfDb -Level "Info" `
     -CorrelationId $CorrelationId `
     -EventName "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder" `
+    -EventMessage "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder"
     
     Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder
 
     TraceToClPerfDb -Level "Info" `
     -CorrelationId $CorrelationId `
-    -EventName "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder"
+    -EventName "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder" `
+    -EventMessage "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder"
 
     TraceToClPerfDb -Level "Info" `
     -CorrelationId $CorrelationId `
