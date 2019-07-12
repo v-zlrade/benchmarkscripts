@@ -584,7 +584,7 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
 
 
     $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod
-    Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder
+    $downloadFileMessage = (Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder) | Out-String
 
     TraceToClPerfDb -Level "Info" `
     -CorrelationId $CorrelationId `

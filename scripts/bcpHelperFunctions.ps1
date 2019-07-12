@@ -52,7 +52,7 @@ Invoke-BcpIn -CorrelationId $correlationid -SourceFileName $sourceFile -TargetTa
       -EventName "start_bcp" `
       -EventMessage "FileName: $SourceFileName, TargetTable $TargetTableName"
 
-    $context = bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n
+    $context = (bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n) | Out-String
 
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
