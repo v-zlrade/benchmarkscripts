@@ -582,39 +582,12 @@ DownloadFileFromBlob -CorrelationId $correlationid -DestinationFolder $dest -Sto
       -EventName "start_download_file" `
       -EventMessage "Downloading file $($FileName) from container $($ContainerName) to folder $($DestinationFolder)."
 
-      TraceToClPerfDb -Level "Info" `
-      -CorrelationId $CorrelationId `
-      -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod" `
-      -EventMessage "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
-
-    $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod
-
-    TraceToClPerfDb -Level "Info" `
-        -CorrelationId $CorrelationId `
-        -EventName "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod" `
-        -EventMessage "New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod"
-
-    TraceToClPerfDb -Level "Info" `
-    -CorrelationId $CorrelationId `
-    -EventName "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder" `
-    -EventMessage "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder"
-    
+    $context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Environment Prod 
     Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder
 
     TraceToClPerfDb -Level "Info" `
     -CorrelationId $CorrelationId `
-    -EventName "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder" `
-    -EventMessage "Get-AzureStorageBlobContent -Container $ContainerName -Context $context -Blob $FileName -Force -WarningAction SilentlyContinue -Destination $DestinationFolder"
-
-    TraceToClPerfDb -Level "Info" `
-    -CorrelationId $CorrelationId `
     -EventName "end_download_file"
-
-    TraceToClPerfDb -Level "Info" `
-       -CorrelationId $CorrelationId `
-       -EventName "file_downloading_message" `
-       -EventMessage "$context"
-       
 }
 
 function DropAllDatabases
@@ -865,5 +838,5 @@ function WaitForInstanceState
         TraceToClPerfDb -Level "Error" -CorrelationId $CorrelationId -EventName "wait_for_state" -EventMessage "SetupDone state is not acheived"
         throw "Server did not achieved required state"
     }
-
+    
 }

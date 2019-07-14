@@ -47,29 +47,17 @@ Invoke-BcpIn -CorrelationId $correlationid -SourceFileName $sourceFile -TargetTa
 
    ."$($PSScriptRoot)\\clPerfCommon.ps1"
 
-   TraceToClPerfDb -Level "Info" `
-   -CorrelationId $CorrelationId `
-   -EventName "pre" `
-   -EventMessage "precheck"
-
-
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
       -EventName "start_bcp" `
-      -EventMessage "bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e '.\$TargetTableName$([guid]::NewGuid()).err' -o '.\$TargetTableName$([guid]::NewGuid()).out' -n"
-
-      
-   TraceToClPerfDb -Level "Info" `
-   -CorrelationId $CorrelationId `
-   -EventName "post" `
-   -EventMessage "postcheck"
+      -EventMessage "Started bcp for database $DatabaseName and table $TargetTableName"
 
     bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n
 
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
       -EventName "end_bcp" `
-      -EventMessage "FileName: $SourceFileName, DatabaseName $DatabaseName, TargetTable $TargetTableName"
+      -EventMessage "Finished bcp for database $DatabaseName and table $TargetTableName"
 }
 
 function InitializeDatabaseForBcp

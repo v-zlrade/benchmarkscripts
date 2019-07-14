@@ -328,7 +328,6 @@ else
     }
 
     DownloadFileFromBlob -CorrelationId $Correlationid -DestinationFolder $workingDirectory -StorageAccountKey $ReportStorageAccountKey -StorageAccountName $ReportStorageAccountName -ContainerName "bcptables" -FileName "$ScaleFactor.bcp"
-
     
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
@@ -336,19 +335,11 @@ else
 
     DropAllDatabases -ServerName $ServerName -Credentials $InstanceCredentials 
 
-    TraceToClPerfDb -Level  "Info" `
-        -CorrelationId $CorrelationId `
-        -EventName "dropped databases with success $ParallelBenchmarksCount"
-
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
     {
-        $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
-        TraceToClPerfDb -Level  "Info" `
-        -CorrelationId $CorrelationId `
-        -EventName "$DatabaseToRunBenchmarkOn"
-
         InitializeDatabaseForBcp -CorrelationId $CorrelationId -ServerName $ServerName -DatabaseName $DatabaseToRunBenchmarkOn -InstanceCredentials $InstanceCredentials -WorkerNumber $ThreadNumber -ScaleFactor $ScaleFactor
     }
+    
     $bcpFilePath = "$workingDirectory\\$ScaleFactor.bcp"
     $bcpTables = 1..$ThreadNumber | % { "bcpTest$_" }
 
@@ -364,8 +355,7 @@ else
     $jobs = @()
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
     {
-        # When running parallel benchmarks, database names should be separated by '_'
-        $DatabaseToPing = $DatabaseName + "_$i"
+        $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
 
         $jobs += $bcpTables | % {
             Start-Job -ScriptBlock {
@@ -407,8 +397,6 @@ else
     $elapsedS = $stopWatch.Elapsed.TotalMilliseconds / 1000
 
     ReportResultsToDatabase -RunId $run_id -MetricName "bcp_elapsed_time" -MetricValue $elapsedS
-
-    Start-Sleep -s 3600
 }
 
 # end benchmark
