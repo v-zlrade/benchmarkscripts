@@ -1,0 +1,5 @@
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\bin\Debug\BenchmarkResultsDb.dacpac
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\bin\Debug\BenchmarkResultsDb.dll
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\bin\Debug\BenchmarkResultsDb.pdb
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\obj\Debug\BenchmarkResultsDb.dll
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\obj\Debug\BenchmarkResultsDb.pdb

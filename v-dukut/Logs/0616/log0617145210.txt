@@ -1,0 +1,18 @@
+Time: 2019-06-17 14:41:57.387931
+instance clperfautotuning.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
+I am starting to sleep..
+pending runs len 4
+Proccessing run: run_Id: None scheduled id: 2532 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 1025, 'SQL.Config_RgSettings_MaxOutstandingIo': 1025, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 312700} Property overrides: InstanceSettings: <Instance><MaxLogRate>102900260</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>102900260</group_log_rate_max><pool_log_rate_max_bps>102900260</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Proccessing run: run_Id: None scheduled id: 2533 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 740, 'SQL.Config_RgSettings_MaxOutstandingIo': 740, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 460300} Property overrides: InstanceSettings: <Instance><MaxLogRate>58602520</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>58602520</group_log_rate_max><pool_log_rate_max_bps>58602520</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Proccessing run: run_Id: None scheduled id: 2538 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 490, 'SQL.Config_RgSettings_MaxOutstandingIo': 490, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 117100} Property overrides: InstanceSettings: <Instance><MaxLogRate>22542910</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>22542910</group_log_rate_max><pool_log_rate_max_bps>22542910</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Proccessing run: run_Id: None scheduled id: 2548 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 520, 'SQL.Config_RgSettings_MaxOutstandingIo': 520, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 139100} Property overrides: InstanceSettings: <Instance><MaxLogRate>88078950</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>88078950</group_log_rate_max><pool_log_rate_max_bps>88078950</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Run with schedule benchmark id2548failed, , due to setup or docker problems
+Exporting results - plotting
+Exporting results - csv

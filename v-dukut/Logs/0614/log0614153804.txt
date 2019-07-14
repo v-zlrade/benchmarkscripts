@@ -1,0 +1,9 @@
+Time: 2019-06-14 15:27:59.962651
+instance clperfautotuning.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
+I am starting to sleep..
+pending runs len 1
+Proccessing run: Id: None Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 330, 'SQL.Config_RgSettings_MaxOutstandingIo': 330, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 341500} Property overrides: InstanceSettings: <Instance><MaxLogRate>56180540</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>56180540</group_log_rate_max><pool_log_rate_max_bps>56180540</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: <Benchmark_Configs.Benchmark_Configs object at 0x00000266400C8E48> start time: None end time None
+run idNone is picked up, but not finished

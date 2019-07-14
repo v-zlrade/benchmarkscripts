@@ -1,0 +1,9 @@
+Time: 2019-06-16 16:26:08.982386
+instance clperfautotuning.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
+I am starting to sleep..
+pending runs len 1
+Proccessing run: run_Id: None scheduled id: 2530 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 775, 'SQL.Config_RgSettings_MaxOutstandingIo': 775, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 439300} Property overrides: InstanceSettings: <Instance><MaxLogRate>98678390</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>98678390</group_log_rate_max><pool_log_rate_max_bps>98678390</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished

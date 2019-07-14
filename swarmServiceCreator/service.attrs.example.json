@@ -1,0 +1,53 @@
+{  
+   'ID':'jeu6vx5zjoomkxn73myir9l5q',
+   'Version':{  
+      'Index':14456
+   },
+   'CreatedAt':'2018-11-01T14:09:17.133215Z',
+   'UpdatedAt':'2018-11-01T14:09:17.133215Z',
+   'Spec':{  
+      'Name':'nameDummyValue',
+      'Labels':{  
+         'labelName':'labelDummyValue'
+      },
+      'TaskTemplate':{  
+         'ContainerSpec':{  
+            'Image':'microsoft/nanoserver',
+            'Command':[  
+               'commandDummyValue'
+            ],
+            'Hostname':'hostNameDummyValue',
+            'Isolation':'default'
+         },
+         'Resources':{  
+            'Reservations':{  
+               'NanoCPUs':4000000000
+            }
+         },
+         'RestartPolicy':{  
+            'Condition':'none',
+            'Delay':0,
+            'MaxAttempts':0,
+            'Window':0
+         },
+         'Placement':{  
+            'Constraints':[  
+               'node.role == worker',
+               'node.id == nodeIdDummyValue'
+            ]
+         },
+         'ForceUpdate':0,
+         'Runtime':'container'
+      },
+      'Mode':{  
+         'Replicated':{  
+            'Replicas':1
+         }
+      }
+   },
+   'Endpoint':{  
+      'Spec':{  
+
+      }
+   }
+}

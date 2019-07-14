@@ -1,0 +1,16 @@
+Time: 2019-06-21 13:53:30.682264
+instance clperfautotuning.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
+instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
+I am starting to sleep..
+pending runs len 3
+Proccessing run: run_Id: None scheduled id: 2657 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 485, 'SQL.Config_RgSettings_MaxOutstandingIo': 485, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 93700} Property overrides: InstanceSettings: <Instance><MaxLogRate>87727340</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>87727340</group_log_rate_max><pool_log_rate_max_bps>87727340</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Proccessing run: run_Id: None scheduled id: 2658 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 235, 'SQL.Config_RgSettings_MaxOutstandingIo': 235, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 191900} Property overrides: InstanceSettings: <Instance><MaxLogRate>49839800</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>49839800</group_log_rate_max><pool_log_rate_max_bps>49839800</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+Proccessing run: run_Id: None scheduled id: 2659 Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 250, 'SQL.Config_RgSettings_MaxOutstandingIo': 250, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 42700} Property overrides: InstanceSettings: <Instance><MaxLogRate>90802100</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>90802100</group_log_rate_max><pool_log_rate_max_bps>90802100</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: TPCC warmup:10run: 30 database: tpcc8500sd start time: None end time None
+run idNone is picked up, but not finished
+is run.result NoneTrue
+is run.result NoneTrue
+is run.result NoneTrue

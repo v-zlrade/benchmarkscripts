@@ -1,0 +1,4 @@
+docker
+pyodbc
+retry
+pytest
