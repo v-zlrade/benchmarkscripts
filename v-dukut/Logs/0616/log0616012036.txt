@@ -1,7 +1,0 @@
-Time: 2019-06-16 01:10:34.206509
-instance clperfautotuning.weu14c689be44714.database.windows.net available False
-instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available False
-instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
-instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
-I am starting to sleep..
-pending runs len 0

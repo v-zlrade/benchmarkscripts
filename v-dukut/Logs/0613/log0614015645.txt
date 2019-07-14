@@ -1,9 +1,0 @@
-instance clperfautotuning.weu14c689be44714.database.windows.net available False
-instance clperftesting-gen5-bc8-loose24-weu-04.weu14c689be44714.database.windows.net available True
-instance clperftesting-gen5-bc8-loose24-ac-weu-00.weu14c689be44714.database.windows.net available False
-instance clperftesting-gen5-bc8-loose24-ac-weu-01.weu14c689be44714.database.windows.net available False
-Job Dubravka_external_0614014643 has been scheduled. Successful scheduling: True
-I am starting to sleep..
-pending runs len 1
-Proccessing run: Id: None Config Overrides: {'SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo': 55, 'SQL.Config_RgSettings_MaxOutstandingIo': 55, 'SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes': 293600} Property overrides: InstanceSettings: <Instance><MaxLogRate>59088780</MaxLogRate></Instance>DatabaseSettings: SloPropertyBag: <SloRgMapping><primary><group_log_rate_max>59088780</group_log_rate_max><pool_log_rate_max_bps>59088780</pool_log_rate_max_bps></primary></SloRgMapping>Benchmark configs: <Benchmark_Configs.Benchmark_Configs object at 0x0000023F09078898>
-run idNone is picked up, but not finished

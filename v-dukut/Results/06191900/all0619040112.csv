@@ -1,2 +1,0 @@
-,backup_kusto_test,end_time,failover_kusto_test,loss,max_log_rate,max_outstanding_io,response_time_90th_percentile,run_id,start_time,transactions_per_minute,volume_io_request_size_bytes
-0,3.4999833333333332,2019-06-19 01:39:03,"(0.0, 0.20971689570558855)",203819.4,59374050.0,965,0.019,9279,2019-06-19 00:56:44,203819.4,443800

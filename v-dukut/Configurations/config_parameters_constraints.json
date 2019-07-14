@@ -1,5 +1,0 @@
-{
-"SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo": {"minValue": 32, "maxValue": 1024 , "gridSize": 5},
-"SQL.Config_RgSettings_MaxOutstandingIo": {"equals": "SQL.Config_RgSettings_LocalVolumeMaxOutstandingIo"},
-"SQL.Config_RgSettings_LocalVolumeIORequestSizeBytes": {"minValue": 8192, "maxValue": 524288,  "gridSize": 100, "description": "choosing between 8 and 512 KB"}
-}
