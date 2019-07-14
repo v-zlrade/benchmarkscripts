@@ -338,11 +338,15 @@ else
 
     TraceToClPerfDb -Level  "Info" `
         -CorrelationId $CorrelationId `
-        -EventName "dropped databases with success"
+        -EventName "dropped databases with success $ParallelBenchmarksCount"
 
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
     {
         $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
+        TraceToClPerfDb -Level  "Info" `
+        -CorrelationId $CorrelationId `
+        -EventName "$DatabaseToRunBenchmarkOn"
+
         InitializeDatabaseForBcp -CorrelationId $CorrelationId -ServerName $ServerName -DatabaseName $DatabaseToRunBenchmarkOn -InstanceCredentials $InstanceCredentials -WorkerNumber $ThreadNumber -ScaleFactor $ScaleFactor
     }
     $bcpFilePath = "$workingDirectory\\$ScaleFactor.bcp"
@@ -361,7 +365,7 @@ else
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
     {
         # When running parallel benchmarks, database names should be separated by '_'
-        $DatabaseToRunBenchmarkOn = $DatabaseName.Split("_")[$i]
+        $DatabaseToPing = $DatabaseName + "_$i"
 
         $jobs += $bcpTables | % {
             Start-Job -ScriptBlock {

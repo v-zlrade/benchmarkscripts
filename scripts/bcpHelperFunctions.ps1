@@ -47,23 +47,24 @@ Invoke-BcpIn -CorrelationId $correlationid -SourceFileName $sourceFile -TargetTa
 
    ."$($PSScriptRoot)\\clPerfCommon.ps1"
 
+   TraceToClPerfDb -Level "Info" `
+   -CorrelationId $CorrelationId `
+   -EventName "pre" `
+   -EventMessage "precheck"
+
+
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
       -EventName "start_bcp" `
       -EventMessage "bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e '.\$TargetTableName$([guid]::NewGuid()).err' -o '.\$TargetTableName$([guid]::NewGuid()).out' -n"
 
-	TraceToClPerfDb -Level "Info" `
-      -CorrelationId $CorrelationId `
-      -EventName "BCP command info" `
-      -EventMessage "bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n"
-
+      
+   TraceToClPerfDb -Level "Info" `
+   -CorrelationId $CorrelationId `
+   -EventName "post" `
+   -EventMessage "postcheck"
 
     bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n
-
-    TraceToClPerfDb -Level "Info" `
-      -CorrelationId $CorrelationId `
-      -EventName "BCP command info" `
-      -EventMessage "bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n"
 
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
