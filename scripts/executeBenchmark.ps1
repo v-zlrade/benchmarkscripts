@@ -337,6 +337,7 @@ else
 
     For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
     {
+        $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
         InitializeDatabaseForBcp -CorrelationId $CorrelationId -ServerName $ServerName -DatabaseName $DatabaseToRunBenchmarkOn -InstanceCredentials $InstanceCredentials -WorkerNumber $ThreadNumber -ScaleFactor $ScaleFactor
     }
     
