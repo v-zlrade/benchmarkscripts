@@ -77,6 +77,7 @@ class BenchmarkServiceGenerator(object):
                 "-Command",
                 BenchmarkServiceGenerator.generatePowershellCommandWithBenchmarkSettings(task.hardware_generation,
                                                                                          task.processor_count,
+                                                                                         task.parallel_exec_cnt,
                                                                                          environment,
                                                                                          storageAccountKey,
                                                                                          task.benchmark_name,
@@ -133,7 +134,7 @@ class BenchmarkServiceGenerator(object):
         return ("./scripts/performanceActions.ps1 "
                 "-HardwareGeneration {hardwareGeneration} "
                 "-ProcessorCount {processorCount} "
-                "-ParallelBenchmarksCount {parallelBenchmarksCount}"
+                "-ParallelBenchmarksCount {parallelBenchmarksCount} "
                 "-Action RunBenchmark "
                 "-Environment {env} "
                 "-LoggingServerName '{loggingServerName}' "

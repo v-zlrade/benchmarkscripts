@@ -26,7 +26,7 @@ AS
         sbv.server_name,
         sbv.[database_name],
         sbv.processor_count,
-		sbv.parallel_exec_cnt,
+        sbv.parallel_exec_cnt,
         sbv.is_bc,
         sbv.is_picked_up,
         sbv.is_adhoc_run,

@@ -50,7 +50,7 @@ Invoke-BcpIn -CorrelationId $correlationid -SourceFileName $sourceFile -TargetTa
     TraceToClPerfDb -Level "Info" `
       -CorrelationId $CorrelationId `
       -EventName "start_bcp" `
-      -EventMessage "Started bcp for database $DatabaseName and table $TargetTableName"
+      -EventMessage "Started bcp for database $DatabaseName and table $TargetTableName. BCP file name is : FileName: $SourceFileName"
 
     bcp $TargetTableName IN $SourceFileName -S $ServerName -d $DatabaseName -U $Username -P $Password -b $BatchSize -e ".\$TargetTableName$([guid]::NewGuid()).err" -o ".\$TargetTableName$([guid]::NewGuid()).out" -n
 

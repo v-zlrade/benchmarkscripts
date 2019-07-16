@@ -78,9 +78,9 @@ BEGIN
 		BEGIN TRANSACTION
 
 		INSERT INTO [dbo].[scheduled_benchmarks]
-			([is_adhoc_run], [processor_count], [parallel_exec_cnt], [hardware_generation], [is_bc], [benchmark_name], [environment], [is_picked_up], [job_id])
+			([is_adhoc_run], [processor_count], [hardware_generation], [is_bc], [benchmark_name], [environment], [is_picked_up], [job_id])
 		VALUES
-			(1, @processor_count, @parallel_exec_cnt, @hardware_generation, @is_bc, @action_name, @environment, 0, @job_id)
+			(1, @processor_count, @hardware_generation, @is_bc, @action_name, @environment, 0, @job_id)
 
 		SET @scheduled_benchmark_id = SCOPE_IDENTITY()
 

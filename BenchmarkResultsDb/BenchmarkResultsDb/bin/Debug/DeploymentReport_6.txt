@@ -1,0 +1,42 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[benchmark_runs].[parallel_exec_cnt] is being dropped, data loss could occur.
+       The column [dbo].[scheduled_benchmarks].[parallel_exec_cnt] is being dropped, data loss could occur.
+
+** User actions
+     Unbind schemabinding
+       [dbo].[scheduled_benchmarks_view] (View)
+     Alter
+       [dbo].[benchmark_runs] (Table)
+       [dbo].[scheduled_benchmarks] (Table)
+       [dbo].[start_benchmark] (Procedure)
+       [dbo].[start_scheduled_benchmark] (Procedure)
+       [dbo].[schedule_adhoc_benchmark] (Procedure)
+       [dbo].[schedule_adhoc_benchmark_override] (Procedure)
+     Rebind schemabinding
+       [dbo].[scheduled_benchmarks_view] (View)
+
+** Supporting actions
+     Refresh
+       [dbo].[benchmark_runs_view] (View)
+       [dbo].[unsent_benchmark_results_view] (View)
+       [dbo].[get_pending_benchmark_actions] (Function)
+       [dbo].[end_benchmark] (Procedure)
+       [dbo].[mark_mail_sent] (Procedure)
+       [dbo].[test_cleanup] (Procedure)
+       [dbo].[test_benchmark_actions] (Procedure)
+       [dbo].[get_next_action] (Procedure)
+       [dbo].[exec_and_verify_get_next_action] (Procedure)
+       [dbo].[schedule_job] (Procedure)
+       [dbo].[test_get_next_action] (Procedure)
+       [dbo].[run_tests] (Procedure)
+
+The column [dbo].[benchmark_runs].[parallel_exec_cnt] is being dropped, data loss could occur.
+The column [dbo].[scheduled_benchmarks].[parallel_exec_cnt] is being dropped, data loss could occur.
+

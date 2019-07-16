@@ -6,6 +6,7 @@ def test_generatePowershellCommand():
         ("./scripts/performanceActions.ps1 "
          "-HardwareGeneration GEN4 "
          "-ProcessorCount 32 "
+         "-ParallelBenchmarksCount 2 "
          "-Action RunBenchmark "
          "-Environment Stage "
          "-LoggingServerName 'testLogSvr' "
@@ -31,6 +32,7 @@ def test_generatePowershellCommand():
         ("./scripts/performanceActions.ps1 "
          "-HardwareGeneration GEN4 "
          "-ProcessorCount 32 "
+         "-ParallelBenchmarksCount 2 "
          "-Action RunBenchmark "
          "-Environment Stage "
          "-LoggingServerName 'testLogSvr' "
@@ -69,6 +71,7 @@ def test_generatePowershellCommand():
     actualValueWithQuery = BenchmarkServiceGenerator.generatePowershellCommandWithBenchmarkSettings(
         hardwareGeneration="GEN4",
         processorCount=32,
+        parallelBenchmarksCount=2,
         environment="Stage",
         storageAccountKey="testPw3",
         benchmark="CDB",
@@ -98,6 +101,7 @@ def test_generatePowershellCommand():
     actualValueWithoutQuery = BenchmarkServiceGenerator.generatePowershellCommandWithBenchmarkSettings(
         hardwareGeneration="GEN4",
         processorCount=32,
+        parallelBenchmarksCount=2,
         environment="Stage",
         storageAccountKey="testPw3",
         benchmark="CDB",
@@ -121,6 +125,8 @@ def test_generatePowershellCommand():
         instanceUsername="testUsername2",
         instancePassword="testPw2"
     )
+
+    assert actualValueWithoutQuery == expectedValues[1]
 
     actualValueWithId = BenchmarkServiceGenerator.generatePowershellCommandWithBenchmarkId(
         scheduledBenchmarkId=1234,

@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[adhoc_run_configs]
     [run_timespan_minutes] INT NOT NULL,
     [custom_master_tsql_query] NVARCHAR(MAX) NULL,
     [required_processor_count] INT NULL,
-	[parallel_exec_cnt] INT NULL,
+    [parallel_exec_cnt] INT NULL,
     [priority] INT NOT NULL,
     [should_restore] BIT NOT NULL,
     [correlation_id] UNIQUEIDENTIFIER NOT NULL,

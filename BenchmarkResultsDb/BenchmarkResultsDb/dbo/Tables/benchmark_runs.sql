@@ -18,7 +18,6 @@ CREATE TABLE [dbo].[benchmark_runs] (
     [end_time]              DATETIME2 (0) NULL,
     [benchmark_name]        VARCHAR (128) NOT NULL,
     [processor_count]       INT           NOT NULL,
-	[parallel_exec_cnt]   INT			  NOT NULL,
     [hardware_generation]   VARCHAR(128)  NOT NULL,
     [is_bc]                 BIT           NOT NULL,
     [environment]           VARCHAR(128)  NULL,

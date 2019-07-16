@@ -192,7 +192,6 @@ else
         @processor_count = $($ProcessorCount),
         @is_bussiness_critical = $(if ($IsBusinessCritical.IsPresent) { 1 } else { 0 }),
         @hardware_generation = $($HardwareGeneration),
-        @parallel_exec_cnt = $($ParallelBenchmarksCount)
         @environment = '$($Environment)',
         @comment = '$($Comment)',
         @correlation_id = '$($CorrelationId)'
@@ -202,61 +201,50 @@ else
 # Get run id
 $run_id = [int](Invoke-Sqlcmd -ServerInstance $LoggingServerName -Database $LoggingDatabaseName -Credential $LoggingCredentials -Query $StartBenchmarkQuery)["run_id"]
 
-# We are currently not supporting parallel benchmarks for TPCC and CDB 
-if ($Benchmark -in @('CDB', 'TPCC'))
-{
-    $ParallelBenchmarksCount = 1
-}
-
 if (-not ($SkipPingJobSwitch.IsPresent))
 {
-    For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
-    {
-        $DatabaseToPing = $DatabaseName + "_$i"
+    # Start a job which will ping the database in order to collect telemetry
+    $pingJob = Start-Job -ArgumentList ($PSScriptRoot,
+                                        $CorrelationId,
+                                        $run_id,
+                                        $BenchmarkRuntimeInMinutes,
+                                        $BenchmarkWarmupInMinutes,
+                                        $ServerName,
+                                        "master",
+                                        $InstanceCredentials,
+                                        $LoggingServerName,
+                                        $LoggingDatabaseName,
+                                        $LoggingCredentials,
+                                        $PingJobPingPeriodInSeconds) `
+                                        -ScriptBlock {
+        $PSScriptRoot = $args[0]
+        $CorrelationId = $args[1]
+        $run_id = $args[2]
+        $BenchmarkRuntimeInMinutes = $args[3]
+        $BenchmarkWarmupInMinutes = $args[4]
+        $ServerName = $args[5]
+        $DatabaseName = $args[6]
+        $InstanceCredentials = $args[7]
+        $LoggingServerName = $args[8]
+        $LoggingDatabaseName = $args[9]
+        $LoggingCredentials = $args[10]
+        $PingJobPingPeriodInSeconds = $args[11]
 
-        # Start a job which will ping the database in order to collect telemetry
-        $pingJob = Start-Job -ArgumentList ($PSScriptRoot,
-                                            $CorrelationId,
-                                            $run_id,
-                                            $BenchmarkRuntimeInMinutes,
-                                            $BenchmarkWarmupInMinutes,
-                                            $ServerName,
-                                            $DatabaseToPing,
-                                            $InstanceCredentials,
-                                            $LoggingServerName,
-                                            $LoggingDatabaseName,
-                                            $LoggingCredentials,
-                                            $PingJobPingPeriodInSeconds) `
-                                            -ScriptBlock {
-            $PSScriptRoot = $args[0]
-            $CorrelationId = $args[1]
-            $run_id = $args[2]
-            $BenchmarkRuntimeInMinutes = $args[3]
-            $BenchmarkWarmupInMinutes = $args[4]
-            $ServerName = $args[5]
-            $DatabaseName = $args[6]
-            $InstanceCredentials = $args[7]
-            $LoggingServerName = $args[8]
-            $LoggingDatabaseName = $args[9]
-            $LoggingCredentials = $args[10]
-            $PingJobPingPeriodInSeconds = $args[11]
+        # Include common scripts
+        ."$($PSScriptRoot)\\clPerfCommon.ps1"
+        SetClPerfDb -Cred $LoggingCredentials -Server $LoggingServerName -Database $LoggingDatabaseName
 
-            # Include common scripts
-            ."$($PSScriptRoot)\\clPerfCommon.ps1"
-            SetClPerfDb -Cred $LoggingCredentials -Server $LoggingServerName -Database $LoggingDatabaseName
-
-            PingDiagnostics -CorrelationId $CorrelationId `
-                            -run_id $run_id `
-                            -BenchmarkRuntimeInMinutes $BenchmarkRuntimeInMinutes `
-                            -BenchmarkWarmupInMinutes $BenchmarkWarmupInMinutes `
-                            -ServerName $ServerName `
-                            -DatabaseName $DatabaseName `
-                            -InstanceCredentials $InstanceCredentials `
-                            -LoggingServerName $LoggingServerName `
-                            -LoggingDatabaseName $LoggingDatabaseName `
-                            -LoggingCredentials $LoggingCredentials `
-                            -PingJobPingPeriodInSeconds $PingJobPingPeriodInSeconds   
-        }
+        PingDiagnostics -CorrelationId $CorrelationId `
+                        -run_id $run_id `
+                        -BenchmarkRuntimeInMinutes $BenchmarkRuntimeInMinutes `
+                        -BenchmarkWarmupInMinutes $BenchmarkWarmupInMinutes `
+                        -ServerName $ServerName `
+                        -DatabaseName $DatabaseName `
+                        -InstanceCredentials $InstanceCredentials `
+                        -LoggingServerName $LoggingServerName `
+                        -LoggingDatabaseName $LoggingDatabaseName `
+                        -LoggingCredentials $LoggingCredentials `
+                        -PingJobPingPeriodInSeconds $PingJobPingPeriodInSeconds   
     }
 }
 
@@ -335,10 +323,15 @@ else
 
     DropAllDatabases -ServerName $ServerName -Credentials $InstanceCredentials 
 
-    For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
+    $Databases = @()
+    For($i = 0; i -lt $ParallelBenchmarksCount; $i++)
     {
-        $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
-        InitializeDatabaseForBcp -CorrelationId $CorrelationId -ServerName $ServerName -DatabaseName $DatabaseToRunBenchmarkOn -InstanceCredentials $InstanceCredentials -WorkerNumber $ThreadNumber -ScaleFactor $ScaleFactor
+        $Databases += $DatabaseName + "_$i";
+    }
+
+    foreach($Database in $Databases)
+    {
+        InitializeDatabaseForBcp -CorrelationId $CorrelationId -ServerName $ServerName -DatabaseName $Database -InstanceCredentials $InstanceCredentials -WorkerNumber $ThreadNumber -ScaleFactor $ScaleFactor
     }
     
     $bcpFilePath = "$workingDirectory\\$ScaleFactor.bcp"
@@ -354,10 +347,8 @@ else
     $stopWatch.Start()
 
     $jobs = @()
-    For($i=0; $i -lt $ParallelBenchmarksCount; $i++)
+    foreach($Database in $Databases)
     {
-        $DatabaseToRunBenchmarkOn = $DatabaseName + "_$i"
-
         $jobs += $bcpTables | % {
             Start-Job -ScriptBlock {
                 ."$($args[7])\\clPerfCommon.ps1"
@@ -378,7 +369,7 @@ else
                             $bcpFilePath,
                             $_,
                             $ServerName,
-                            $DatabaseToRunBenchmarkOn,
+                            $Database,
                             $InstanceCredentials.GetNetworkCredential().UserName,
                             $InstanceCredentials.GetNetworkCredential().Password,
                             $PSScriptRoot,

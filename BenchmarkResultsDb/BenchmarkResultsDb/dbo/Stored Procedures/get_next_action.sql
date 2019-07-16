@@ -32,7 +32,7 @@ BEGIN
     DECLARE @run_timespan_minutes INT = NULL;
     DECLARE @custom_master_tsql_query NVARCHAR(MAX) = NULL;
     DECLARE @required_processor_count INT = NULL;
-	DECLARE @parallel_exec_cnt INT = NULL;
+    DECLARE @parallel_exec_cnt INT = NULL;
     DECLARE @id INT = NULL;
     DECLARE @scheduled_count INT = NULL;
     DECLARE @should_restore BIT;
@@ -69,7 +69,7 @@ BEGIN
         @run_timespan_minutes = [run_timespan_minutes],
         @custom_master_tsql_query = [custom_master_tsql_query],
         @required_processor_count = [required_processor_count],
-		@parallel_exec_cnt = [parallel_exec_cnt],
+        @parallel_exec_cnt = [parallel_exec_cnt],
         @should_restore = [should_restore],
         @correlation_id = [correlation_id]
     FROM [scheduled_benchmarks_view]
@@ -102,7 +102,7 @@ BEGIN
             @run_timespan_minutes = [run_timespan_minutes],
             @custom_master_tsql_query = [custom_master_tsql_query],
             @required_processor_count = [required_processor_count],
-			@parallel_exec_cnt = [parallel_exec_cnt],
+            @parallel_exec_cnt = [parallel_exec_cnt],
             @should_restore = 1,
             @correlation_id = NEWID()
         FROM [scheduled_benchmarks_view]
@@ -114,7 +114,7 @@ BEGIN
             FROM [occupied_instances_view]
         )
         AND [is_picked_up] = 0
-		AND @stage_scheduled_runs_embargo = 0
+        AND @stage_scheduled_runs_embargo = 0
         ORDER BY [required_processor_count] DESC, [id] ASC
 
         -- only update if we actually got some @server_name back
@@ -175,7 +175,7 @@ BEGIN
             @custom_master_tsql_query AS [custom_master_tsql_query],
             @should_restore AS [should_restore],
             @required_processor_count AS [required_processor_count],
-			@parallel_exec_cnt AS [parallel_exec_cnt],
+            @parallel_exec_cnt AS [parallel_exec_cnt],
             @correlation_id AS [correlation_id]
     END
 

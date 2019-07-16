@@ -3,3 +3,4 @@ D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\bin\Debug\Benchmar
 D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\bin\Debug\BenchmarkResultsDb.pdb
 D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\obj\Debug\BenchmarkResultsDb.dll
 D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\obj\Debug\BenchmarkResultsDb.pdb
+D:\SF\CLPerf\benchmarks\BenchmarkResultsDb\BenchmarkResultsDb\obj\Debug\BenchmarkResultsDb.sqlprojAssemblyReference.cache

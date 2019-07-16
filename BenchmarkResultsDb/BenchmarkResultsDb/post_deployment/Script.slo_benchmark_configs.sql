@@ -5,7 +5,7 @@ BEGIN TRANSACTION INIT_SLO_BENCH
 DECLARE @slo_benchmark_config_tmp TABLE
 (
     [processor_count] INT NOT NULL,
-	[parallel_exec_cnt] INT NOT NULL,
+    [parallel_exec_cnt] INT NOT NULL,
     [hardware_generation] NVARCHAR(128) NOT NULL,
     [is_bc] BIT NOT NULL,
     [benchmark_name] NVARCHAR(128) NOT NULL,
@@ -24,7 +24,7 @@ DECLARE @slo_benchmark_config_tmp TABLE
 INSERT INTO @slo_benchmark_config_tmp
 (
         [processor_count],
-		[parallel_exec_cnt],
+        [parallel_exec_cnt],
         [hardware_generation],
         [is_bc],
         [benchmark_name],
@@ -148,7 +148,7 @@ VALUES
 MERGE [slo_benchmark_config] AS target
 USING @slo_benchmark_config_tmp AS source
 ON (target.[processor_count] = source.[processor_count]
-	AND target.[parallel_exec_cnt] = source.[parallel_exec_cnt]
+    AND target.[parallel_exec_cnt] = source.[parallel_exec_cnt]
     AND target.[hardware_generation] = source.[hardware_generation]
     AND target.[is_bc] = source.[is_bc]
     AND target.[benchmark_name] = source.[benchmark_name]
@@ -168,7 +168,7 @@ ON (target.[processor_count] = source.[processor_count]
         INSERT
         (
                 [processor_count],
-				[parallel_exec_cnt],
+                [parallel_exec_cnt],
                 [hardware_generation],
                 [is_bc],
                 [benchmark_name],
@@ -185,7 +185,7 @@ ON (target.[processor_count] = source.[processor_count]
         ) VALUES
         (
                 [source].[processor_count],
-				[source].[parallel_exec_cnt],
+                [source].[parallel_exec_cnt],
                 [source].[hardware_generation],
                 [source].[is_bc],
                 [source].[benchmark_name],

@@ -27,7 +27,7 @@ CREATE PROCEDURE [dbo].[schedule_adhoc_benchmark]
     @run_timespan_minutes INT = NULL,
     @custom_master_tsql_query NVARCHAR(MAX) = NULL,
     @required_processor_count INT = NULL,
-	@parallel_exec_cnt INT = NULL, 
+    @parallel_exec_cnt INT = NULL, 
     @scheduled_by NVARCHAR(1024) = NULL,
     @comment NVARCHAR(MAX) = NULL,
     @scheduled_benchmark_id INT = NULL OUTPUT
@@ -44,7 +44,7 @@ BEGIN
         @run_timespan_minutes = COALESCE(@run_timespan_minutes, [run_timespan_minutes]),
         @custom_master_tsql_query = COALESCE(@custom_master_tsql_query, [custom_master_tsql_query]),
         @required_processor_count = COALESCE(@required_processor_count, [required_processor_count]),
-		@parallel_exec_cnt  = COALESCE(@parallel_exec_cnt, [parallel_exec_cnt])
+        @parallel_exec_cnt  = COALESCE(@parallel_exec_cnt, [parallel_exec_cnt])
     FROM [slo_benchmark_config]
     WHERE [benchmark_name] = @action_name
     AND [environment] = @environment
@@ -60,9 +60,9 @@ BEGIN
     BEGIN TRANSACTION
 
         INSERT INTO [dbo].[scheduled_benchmarks]
-            ([is_adhoc_run], [processor_count], [parallel_exec_cnt], [hardware_generation], [is_bc], [benchmark_name], [environment], [is_picked_up])
+            ([is_adhoc_run], [processor_count], [hardware_generation], [is_bc], [benchmark_name], [environment], [is_picked_up])
         VALUES
-            (1, @processor_count, @parallel_exec_cnt, @hardware_generation, @is_bc, @action_name, @environment, 0)
+            (1, @processor_count, @hardware_generation, @is_bc, @action_name, @environment, 0)
 
         SET @scheduled_benchmark_id = SCOPE_IDENTITY()
 
@@ -79,7 +79,7 @@ BEGIN
             [run_timespan_minutes],
             [custom_master_tsql_query],
             [required_processor_count],
-			[parallel_exec_cnt],
+            [parallel_exec_cnt],
             [priority],
             [should_restore],
             [correlation_id],
@@ -98,7 +98,7 @@ BEGIN
             @run_timespan_minutes,
             @custom_master_tsql_query,
             @required_processor_count,
-			@parallel_exec_cnt,
+            @parallel_exec_cnt,
             @priority,
             @should_restore,
             NEWID(),
