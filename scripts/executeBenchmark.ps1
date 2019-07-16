@@ -324,7 +324,7 @@ else
     DropAllDatabases -ServerName $ServerName -Credentials $InstanceCredentials 
 
     $Databases = @()
-    For($i = 0; i -lt $ParallelBenchmarksCount; $i++)
+    For($i = 0; $i -lt $ParallelBenchmarksCount; $i++)
     {
         $Databases += $DatabaseName + "_$i";
     }

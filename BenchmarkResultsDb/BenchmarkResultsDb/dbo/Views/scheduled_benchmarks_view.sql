@@ -22,7 +22,7 @@ AS
         sb.is_bc,
         sb.is_picked_up,
         sb.is_adhoc_run,
-        sar.parallel_exec_cnt,
+        parallel_exec_cnt = ISNULL(sar.parallel_exec_cnt, 1),
         benchmark_scaling_argument = ISNULL(sar.benchmark_scaling_argument, sbc.benchmark_scaling_argument),
         sar.correlation_id,
         custom_master_tsql_query = ISNULL(sar.custom_master_tsql_query, sbc.custom_master_tsql_query),

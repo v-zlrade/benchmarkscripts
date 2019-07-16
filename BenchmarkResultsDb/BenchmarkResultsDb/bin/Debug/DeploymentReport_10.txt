@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[scheduled_benchmarks_view] (View)
+
+** Supporting actions
+     Refresh
+       [dbo].[benchmark_runs_view] (View)
+       [dbo].[unsent_benchmark_results_view] (View)
+       [dbo].[get_pending_benchmark_actions] (Function)
+       [dbo].[get_next_action] (Procedure)
+       [dbo].[test_benchmark_actions] (Procedure)
+       [dbo].[exec_and_verify_get_next_action] (Procedure)
+       [dbo].[test_get_next_action] (Procedure)
+       [dbo].[run_tests] (Procedure)
